@@ -1,25 +1,69 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-
 const userApi=createApi({
     reducerPath:"user",
     baseQuery:fetchBaseQuery({
-        baseUrl:'https://localhost:4000'
+        baseUrl:'http://localhost:4000'
     }),
     endpoints(builder){
         return{
-            registerUser:builder.mutation({
-                query:(FormData)=>{
+            RegisterUser:builder.mutation({
+                query:(formData)=>{
                     return{
-                        url:'/userRegister',
-                        body:FormData,
+                        url:'/auth/userRegister',
+                        body:formData,
                         method:'POST',
                     }
                 }
             }),
-
+                UserLogin:builder.mutation({
+                    query:(data)=>{
+                        return{
+                            url:'/auth/UserLogin',
+                            body:data,
+                            method:'POST'
+                        }
+                    }
+                }), 
+                UserDetailsFetch:builder.query({
+                    query:({token})=>{
+                        return{
+                            url: `/UserDetails`,
+                          headers:{
+                            Authorization: `Bearer ${token}` // Add "Bearer" prefix
+                          },
+                          method:'GET'
+                        }
+                    }
+                }),
+                UserSendingCoinByEmail:builder.mutation({
+                        query:({emailformData,token})=>{
+                            console.log(emailformData)
+                            return{
+                                url:`/UserSendingCoinByEmail`,
+                                body:emailformData,
+                                headers:{
+                                    Authorization: `Bearer ${token}` // Add "Bearer" prefix
+                                  },
+                                method:'POST'
+                            }
+                        }
+                }),   
+                 UserSendingCoinById:builder.mutation({
+                    query:({idformData,token})=>{
+                        console.log(idformData)
+                        return{
+                            url:`/UserSendingCoinById`,
+                            body:idformData,
+                            headers:{
+                                Authorization: `Bearer ${token}` // Add "Bearer" prefix
+                              },
+                            method:'POST'
+                        }
+                    }
+            })
         }
     }
 }) 
 
-export const{useloginUserQuery,useregisterUserMutation}= userApi
+export const{useRegisterUserMutation,useUserLoginMutation,useUserDetailsFetchQuery,useUserSendingCoinByEmailMutation,useUserSendingCoinByIdMutation}= userApi
 export {userApi}

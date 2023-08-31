@@ -1,6 +1,6 @@
 import { configureStore} from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
-import { userApi } from "./apis/userApi";
+import { userApi, useRegisterUserMutation,useUserLoginMutation,useUserDetailsFetchQuery,useUserSendingCoinByEmailMutation,useUserSendingCoinByIdMutation} from "./apis/userApi.js";
 const store=configureStore({
     reducer:{
          [userApi.reducerPath]:userApi.reducer   
@@ -13,5 +13,5 @@ const store=configureStore({
 
 setupListeners(store.dispatch)
 
-export {useloginUserQuery,useregisterUserMutation} from './apis/userApi'
+export {useRegisterUserMutation,useUserLoginMutation,useUserDetailsFetchQuery,useUserSendingCoinByEmailMutation,useUserSendingCoinByIdMutation}
 export default store
