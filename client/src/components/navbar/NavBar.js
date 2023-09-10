@@ -6,6 +6,9 @@ const NavBar = () => {
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!mobileMenuOpen);
     };
+    const handleLogout = () => {
+        localStorage.removeItem("token")
+    }
 
     return (
         <>
@@ -28,7 +31,9 @@ const NavBar = () => {
                             <Link to="/send">SEND</Link>
                         </div>
                         <div className='hover:border-b-2'>
-                            <Link to="/logout">LOGOUT</Link>
+                            <button onClick={handleLogout}>
+                                <Link to="/logout">LOGOUT</Link>
+                            </button>
                         </div>
                     </div>
                     <div className='md:hidden p-4 '>
@@ -58,8 +63,10 @@ const NavBar = () => {
                         <div className='border-b-2 hover:bg-gray-500 rounded-sm p-1'>
                             <Link to="/send">SEND</Link>
                         </div>
-                        <div className='border-b-2 hover:bg-gray-500 rounded-sm p-1'>
-                            <Link to="/logout">LOGOUT</Link>
+                        <div className='hover:border-b-2'>
+                            <button onClick={handleLogout}>
+                                <Link to="/logout">LOGOUT</Link>
+                            </button>
                         </div>
                     </div>
                 )

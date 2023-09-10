@@ -1,15 +1,18 @@
-import NavBar from '../components/navbar/NavBar.js'
+import React, { useEffect } from 'react';
+import NavBar from '../components/navbar/NavBar.js';
+import Buy from '../components/buy/Buy.js';
+import UserTokenCheck from '../customhook/UserValidate.js';
 
-
-import Buy from '../components/buy/Buy.js'
 const BuyPage = () => {
-  
+ const tokenCheck=UserTokenCheck()
+  useEffect(()=>{
+  },[tokenCheck])
     return (
         <div>
-            <NavBar/>
-            <Buy/>
+            <NavBar />
+            <Buy  />
         </div>
-    )
-}
+    );
+};
 
-export default BuyPage
+export default BuyPage;

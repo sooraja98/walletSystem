@@ -5,8 +5,7 @@ const SendPage = () => {
     
    
     return (
-        <div>
-         
+        <div>  
             <NavBar/>
              <Send/>   
         </div>

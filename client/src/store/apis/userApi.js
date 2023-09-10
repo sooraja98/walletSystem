@@ -60,10 +60,25 @@ const userApi=createApi({
                             method:'POST'
                         }
                     }
+            }),
+            UserBuyCoins:builder.mutation({
+                query:({amount,coin,token})=>{
+                    return{
+                        url:'/UserBuyCoins',
+                        body: {
+                            amount: amount,
+                            coin: coin
+                          },
+                        headers:{
+                            Authorization: `Bearer ${token}` // Add "Bearer" prefix
+                        },
+                        method:'POST'
+                    }
+                }
             })
         }
     }
 }) 
 
-export const{useRegisterUserMutation,useUserLoginMutation,useUserDetailsFetchQuery,useUserSendingCoinByEmailMutation,useUserSendingCoinByIdMutation}= userApi
+export const{useRegisterUserMutation,useUserLoginMutation,useUserDetailsFetchQuery,useUserSendingCoinByEmailMutation,useUserSendingCoinByIdMutation,useUserBuyCoinsMutation}= userApi
 export {userApi}

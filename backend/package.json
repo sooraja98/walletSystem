@@ -20,6 +20,9 @@
     "mongoose": "^7.4.4",
     "nodemailer": "^6.9.4",
     "nodemon": "^3.0.1",
-    "safecrypts": "^1.0.5"
+    "razorpay": "^2.9.2",
+    "safecrypts": "^1.0.5",
+    "stripe": "^13.3.0",
+    "uuid": "^9.0.0"
   }
 }

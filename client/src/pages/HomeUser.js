@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import NavBar from '../components/navbar/NavBar';
 import UserProfile from '../components/profile/UserProfile';
 import { useUserDetailsFetchQuery } from '../store';
+import UserTokenCheck from '../customhook/UserValidate';
 
 const HomeUser = () => {
-    const token = localStorage.getItem('token');
 
+    const userToken=UserTokenCheck()
+    useEffect(()=>{
+    },[userToken])
+    const token = localStorage.getItem('token');
+    
     // Destructure the 'data', 'isLoading', and 'isError' properties
     const { data: resultData, isLoading, isError } = useUserDetailsFetchQuery({token });
 

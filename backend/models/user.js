@@ -32,27 +32,40 @@ const userSchema = new mongoose.Schema({
     },
     transaction: [
         {
-          
+
             uniqueid: {
-                type: String,
-                
+                type: String
+
             },
             email: {
-                type: String,
-                
+                type: String
+
             },
             amount: {
-                type: Number,
-                
+                type: Number
+
             },
             methode: {
-                type: String,
-                
+                type: String
+
             },
             time: {
-                type: Date,
-                
+                type: Date
+
             }
+        }
+    ],
+    Payment: [
+        {
+            id: {
+                type: String,
+                required: true
+            },
+            orders: {
+                type: Array,
+                default: []
+            }
+
         }
     ]
 }, {timestamps: true})

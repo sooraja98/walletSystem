@@ -7,29 +7,25 @@ import userRoute from './routers/userRoute.js';
 import adminRoute from './routers/adminRoute.js';
 import cors from 'cors'
 
-const PORT = process.env.PORT || 4000; // Use the specified PORT or default to 4000
 
+
+const PORT = process.env.PORT || 4000; // Use the specified PORT or default to 4000
 const app = express();
 dotenv.config();
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors())
 app.use('/', userRoute);
 app.use('/auth', authRoute);
 app.use('/admin', adminRoute);
-
+     
 app.use((err, req, res, next) => {
-  const errorStatus = err.status || 500;
-  const errorMessage = err.message || "something went wrong";
-  return res.status(errorStatus).json({
-    success: false,
-    status: errorStatus,
-    message: errorMessage,
-    stack: err.stack
-  });
+    const errorStatus = err.status || 500;
+    const errorMessage = err.message || "something went wrong";
+    return res.status(errorStatus).json({success: false, status: errorStatus, message: errorMessage, stack: err.stack});
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is started on port ${PORT}`);
+    console.log(`Server is started on port ${PORT}`);
 });
